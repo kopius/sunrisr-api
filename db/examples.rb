@@ -16,3 +16,43 @@
 #                password: 'abc123',
 #                password_confirmation: nil)
 # end
+
+User.create(email: 'sunny@sunny.com', username: 'Sunny', password: '1')
+
+Affirmation.create([
+                     {
+                       prompt: 'Today I will',
+                       response: 'reach for the stars',
+                       user_id: 1
+                     },
+                     {
+                       prompt: 'I love',
+                       response: 'my friends and family',
+                       user_id: 1
+                     },
+                     {
+                       prompt: 'My mind and body',
+                       response: 'are in perfect balance',
+                       user_id: 1
+                     }
+                   ])
+
+Morning.create(completed_all: false, user_id: 1)
+
+MorningAffirmation.create([
+                            {
+                              completed: false,
+                              morning_id: 1,
+                              affirmation_id: 1
+                            },
+                            {
+                              completed: false,
+                              morning_id: 1,
+                              affirmation_id: 2
+                            },
+                            {
+                              completed: false,
+                              morning_id: 1,
+                              affirmation_id: 3
+                            }
+                          ])
