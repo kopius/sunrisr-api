@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :morning_affirmations, except: [:new, :edit]
   resources :mornings, except: [:new, :edit]
   resources :affirmations, except: [:new, :edit]
   resources :examples, except: [:new, :edit]

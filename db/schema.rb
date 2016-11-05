@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104202001) do
+ActiveRecord::Schema.define(version: 20161105200345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20161104202001) do
   end
 
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
+
+  create_table "morning_affirmations", force: :cascade do |t|
+    t.boolean  "completed"
+    t.integer  "morning_id"
+    t.integer  "affirmation_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "morning_affirmations", ["affirmation_id"], name: "index_morning_affirmations_on_affirmation_id", using: :btree
+  add_index "morning_affirmations", ["morning_id"], name: "index_morning_affirmations_on_morning_id", using: :btree
 
   create_table "mornings", force: :cascade do |t|
     t.boolean  "completed_all"
@@ -58,5 +69,7 @@ ActiveRecord::Schema.define(version: 20161104202001) do
 
   add_foreign_key "affirmations", "users"
   add_foreign_key "examples", "users"
+  add_foreign_key "morning_affirmations", "affirmations"
+  add_foreign_key "morning_affirmations", "mornings"
   add_foreign_key "mornings", "users"
 end
