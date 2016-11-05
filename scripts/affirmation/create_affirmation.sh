@@ -1,11 +1,12 @@
 #!/bin/bash
 
-curl --include --request GET http://localhost:4741/affirmations/$ID \
-  --header "Authorization: Token token=$TOKEN"
+curl --include --request POST http://localhost:4741/affirmations \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN" \
   --data '{
     "affirmation": {
       "prompt": "Today I will",
       "response": "reach for the stars",
-      "user_id": 1`
+      "user_id": 1
     }
   }'

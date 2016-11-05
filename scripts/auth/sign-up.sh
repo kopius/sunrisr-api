@@ -5,17 +5,7 @@ curl --include --request POST http://localhost:4741/sign-up \
   --data '{
     "credentials": {
       "email": "an@example.email",
-      "username": "Alex",
-      "password": "an example password",
-      "password_confirmation": "an example password"
-    }
-  }'
-
-curl --include --request POST http://localhost:4741/sign-up \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "another@example.email",
+      "username": "Example User",
       "password": "an example password",
       "password_confirmation": "an example password"
     }

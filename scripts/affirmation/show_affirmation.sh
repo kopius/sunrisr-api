@@ -1,4 +1,4 @@
 #!/bin/bash
 
-curl --include --request GET http://localhost:4741/mornings/$ID \
+curl --include --request GET http://localhost:4741/affirmations/$ID \
   --header "Authorization: Token token=$TOKEN"
