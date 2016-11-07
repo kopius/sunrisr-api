@@ -4,7 +4,16 @@ class MorningAffirmationsController < ProtectedController
   # GET /morning_affirmations
   # GET /morning_affirmations.json
   def index
-    @morning_affirmations = MorningAffirmation.all
+    # build up and return a collection of only those morning_affirmation records
+    # that belong to a morning owned by current_user
+    @morning_affirmations = []
+    @mornings = current_user.mornings
+
+    @mornings.each do |morning|
+      morning.morning_affirmations.each do |ma|
+        @morning_affirmations.push(ma)
+      end
+    end
 
     render json: @morning_affirmations
   end
@@ -49,11 +58,22 @@ class MorningAffirmationsController < ProtectedController
 
   private
 
-    def set_morning_affirmation
-      @morning_affirmation = MorningAffirmation.find(params[:id])
-    end
+  def set_morning_affirmation
+    # return the requested morning_affirmation only if it belongs to a morning
+    # that belongs to current_user
+    @morning_affirmation = MorningAffirmation.find(params[:id])
+    morning_id = @morning_affirmation.morning_id
 
-    def morning_affirmation_params
-      params.require(:morning_affirmation).permit(:completed, :morning_id, :affirmation_id)
+    if current_user.mornings.find(morning_id)
+      return @morning_affirmation
+    else
+      return nil
     end
+  end
+
+  def morning_affirmation_params
+    params.require(:morning_affirmation).permit(:completed,
+                                                :morning_id,
+                                                :affirmation_id)
+  end
 end

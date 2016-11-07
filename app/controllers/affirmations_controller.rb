@@ -4,7 +4,8 @@ class AffirmationsController < ProtectedController
   # GET /affirmations
   # GET /affirmations.json
   def index
-    @affirmations = Affirmation.all
+    # @affirmations = Affirmation.all
+    @affirmations = current_user.affirmations
 
     render json: @affirmations
   end
@@ -18,7 +19,7 @@ class AffirmationsController < ProtectedController
   # POST /affirmations
   # POST /affirmations.json
   def create
-    @affirmation = Affirmation.new(affirmation_params)
+    @affirmation = current_user.affirmations.build(affirmation_params)
 
     if @affirmation.save
       render json: @affirmation, status: :created, location: @affirmation
@@ -49,11 +50,11 @@ class AffirmationsController < ProtectedController
 
   private
 
-    def set_affirmation
-      @affirmation = Affirmation.find(params[:id])
-    end
+  def set_affirmation
+    @affirmation = current_user.affirmations.find(params[:id])
+  end
 
-    def affirmation_params
-      params.require(:affirmation).permit(:prompt, :response, :user_id)
-    end
+  def affirmation_params
+    params.require(:affirmation).permit(:prompt, :response, :user_id)
+  end
 end

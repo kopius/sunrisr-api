@@ -4,7 +4,8 @@ class MorningsController < ProtectedController
   # GET /mornings
   # GET /mornings.json
   def index
-    @mornings = Morning.all
+    # @mornings = Morning.all
+    @mornings = current_user.mornings
 
     render json: @mornings
   end
@@ -18,7 +19,7 @@ class MorningsController < ProtectedController
   # POST /mornings
   # POST /mornings.json
   def create
-    @morning = Morning.new(morning_params)
+    @morning = current_user.mornings.build(morning_params)
 
     if @morning.save
       render json: @morning, status: :created, location: @morning
@@ -49,11 +50,11 @@ class MorningsController < ProtectedController
 
   private
 
-    def set_morning
-      @morning = Morning.find(params[:id])
-    end
+  def set_morning
+    @morning = current_user.mornings.find(params[:id])
+  end
 
-    def morning_params
-      params.require(:morning).permit(:completed_all, :user_id)
-    end
+  def morning_params
+    params.require(:morning).permit(:completed_all, :user_id)
+  end
 end
