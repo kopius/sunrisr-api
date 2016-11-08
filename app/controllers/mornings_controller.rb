@@ -7,13 +7,13 @@ class MorningsController < ProtectedController
     # @mornings = Morning.all
     @mornings = current_user.mornings
 
-    render json: @mornings.to_json(methods: :completed_all)
+    render json: @mornings
   end
 
   # GET /mornings/1
   # GET /mornings/1.json
   def show
-    render json: @morning.to_json(methods: :completed_all)
+    render json: @morning
   end
 
   # POST /mornings
@@ -22,7 +22,7 @@ class MorningsController < ProtectedController
     @morning = current_user.mornings.build(morning_params)
 
     if @morning.save
-      render json: @morning.to_json(methods: :completed_all),
+      render json: @morning,
              status: :created,
              location: @morning
     else

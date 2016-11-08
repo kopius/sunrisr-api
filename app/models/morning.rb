@@ -5,6 +5,7 @@ class Morning < ActiveRecord::Base
   def completed_all
     return true unless morning_affirmations
     morning_affirmations.each do |ma|
+      puts ma
       return false unless ma.completed
     end
     true
