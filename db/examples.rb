@@ -65,6 +65,16 @@ MorningAffirmation.create([
                             }
                           ])
 
+# Create a MorningAffirmation with a different morning
+Morning.create(completed_all: false, user_id: 1)
+MorningAffirmation.create([
+                            {
+                              completed: false,
+                              morning_id: 2,
+                              affirmation_id: 1
+                            }
+                          ])
+
 User.create(email: 'grumpy@grumpy.com', username: 'Grumpy', password: '1')
 
 Affirmation.create([
@@ -80,7 +90,7 @@ Morning.create(completed_all: false, user_id: 2)
 MorningAffirmation.create([
                             {
                               completed: false,
-                              morning_id: 2,
+                              morning_id: 3,
                               affirmation_id: 4
                             }
                           ])

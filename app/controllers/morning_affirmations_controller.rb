@@ -1,19 +1,10 @@
 class MorningAffirmationsController < ProtectedController
   before_action :set_morning_affirmation, only: [:show, :update, :destroy]
 
-  # GET /morning_affirmations
-  # GET /morning_affirmations.json
+  # GET /morning_affirmations?morning_id=:morning_id
   def index
-    # build up and return a collection of only those morning_affirmation records
-    # that belong to a morning owned by current_user
-    @morning_affirmations = []
-    @mornings = current_user.mornings
-
-    @mornings.each do |morning|
-      morning.morning_affirmations.each do |ma|
-        @morning_affirmations.push(ma)
-      end
-    end
+    @morning_affirmations = MorningAffirmation.where('morning_id = ?',
+                                                     query_params[:morning_id])
 
     render json: @morning_affirmations
   end
@@ -30,7 +21,9 @@ class MorningAffirmationsController < ProtectedController
     @morning_affirmation = MorningAffirmation.new(morning_affirmation_params)
 
     if @morning_affirmation.save
-      render json: @morning_affirmation, status: :created, location: @morning_affirmation
+      render json: @morning_affirmation,
+             status: :created,
+             location: @morning_affirmation
     else
       render json: @morning_affirmation.errors, status: :unprocessable_entity
     end
@@ -75,5 +68,9 @@ class MorningAffirmationsController < ProtectedController
     params.require(:morning_affirmation).permit(:completed,
                                                 :morning_id,
                                                 :affirmation_id)
+  end
+
+  def query_params
+    params.permit(:morning_id)
   end
 end
