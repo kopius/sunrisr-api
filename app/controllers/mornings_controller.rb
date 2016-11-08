@@ -22,6 +22,15 @@ class MorningsController < ProtectedController
     @morning = current_user.mornings.build(morning_params)
 
     if @morning.save
+      affirmations = current_user.affirmations
+      affirmations.each do |affirmation|
+        MorningAffirmation.create(
+          completed: false,
+          morning_id: @morning.id,
+          affirmation_id: affirmation.id
+        ).save
+      end
+
       render json: @morning,
              status: :created,
              location: @morning
@@ -57,6 +66,6 @@ class MorningsController < ProtectedController
   end
 
   def morning_params
-    params.require(:morning).permit(:user_id)
+    { user_id: current_user.id }
   end
 end
