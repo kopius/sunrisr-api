@@ -1,4 +1,4 @@
-<% project_name = 'morning-affirmation-api' %>
+<% project_name = 'sunrisr-api' %>
 
 default: &default
   adapter: postgresql

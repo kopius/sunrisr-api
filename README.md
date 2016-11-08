@@ -1,6 +1,6 @@
 # MorningAffirmation API
 
-Dedicated Rails API for MorningAffirmation. More information at [morning-affirmation-client](https://github.com/kopius/morning-affirmation-client).
+Dedicated Rails API for MorningAffirmation. More information at [sunrisr](https://github.com/kopius/sunrisr).
 
 ## API Endpoints
 
