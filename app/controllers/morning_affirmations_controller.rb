@@ -66,8 +66,8 @@ class MorningAffirmationsController < ProtectedController
 
   def morning_affirmation_params
     params.require(:morning_affirmation).permit(:completed,
-                                                :morning_id,
-                                                :affirmation_id)
+                                                :affirmation_id,
+                                                :morning_id)
   end
 
   def query_params

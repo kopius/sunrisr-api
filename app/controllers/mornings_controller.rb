@@ -39,16 +39,9 @@ class MorningsController < ProtectedController
     end
   end
 
-  # PATCH/PUT /mornings/1
-  # PATCH/PUT /mornings/1.json
+  # cannot update a morning after it has been created
   def update
-    @morning = Morning.find(params[:id])
-
-    if @morning.update(morning_params)
-      head :no_content
-    else
-      render json: @morning.errors, status: :unprocessable_entity
-    end
+    head :bad_request
   end
 
   # DELETE /mornings/1

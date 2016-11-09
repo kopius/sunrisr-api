@@ -55,6 +55,6 @@ class AffirmationsController < ProtectedController
   end
 
   def affirmation_params
-    params.require(:affirmation).permit(:prompt, :response, :user_id)
+    params.require(:affirmation).permit(:prompt, :response)
   end
 end
