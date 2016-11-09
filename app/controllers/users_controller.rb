@@ -44,12 +44,17 @@ class UsersController < ProtectedController
   end
 
   def index
-    render json: User.all
+    render json: current_user
   end
 
   def show
     user = User.find(params[:id])
-    render json: user
+
+    if user == current_user
+      render json: user
+    else
+      head :unauthorized
+    end
   end
 
   def update
