@@ -1,6 +1,6 @@
 class Morning < ActiveRecord::Base
   belongs_to :user
-  has_many :morning_affirmations
+  has_many :morning_affirmations, dependent: :destroy
 
   def completed_all
     return true unless morning_affirmations
