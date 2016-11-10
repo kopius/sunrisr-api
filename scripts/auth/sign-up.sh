@@ -4,7 +4,6 @@ curl --include --request POST http://localhost:4741/sign-up \
   --data '{
     "credentials": {
       "email": "an@example.email",
-      "username": "Example User",
       "password": "an example password",
       "password_confirmation": "an example password"
     }
@@ -16,7 +15,6 @@ curl --include --request POST https://sunrisr-api.herokuapp.com/sign-up \
   --data '{
     "credentials": {
       "email": "an@example.email",
-      "username": "Example User",
       "password": "an example password",
       "password_confirmation": "an example password"
     }

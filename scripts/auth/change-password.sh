@@ -4,8 +4,8 @@ curl --include --request PATCH http://localhost:4741/change-password/$ID \
   --header "Content-Type: application/json" \
   --data '{
     "passwords": {
-      "old": "1",
-      "new": "2"
+      "old": "an example password",
+      "new": "a totally different password"
     }
   }'
 
@@ -15,7 +15,7 @@ curl --include --request PATCH https://sunrisr-api.herokuapp.com/change-password
   --header "Content-Type: application/json" \
   --data '{
     "passwords": {
-      "old": "1",
-      "new": "2"
+      "old": "an example password",
+      "new": "a totally different password"
     }
   }'
