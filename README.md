@@ -1,4 +1,4 @@
-# MorningAffirmation API
+# Sunrisr API
 
 Dedicated Rails API for Sunrisr, an app that quizzes users every morning on their personalized affirmations. More information at the [client repository](https://github.com/kopius/sunrisr).
 
