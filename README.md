@@ -4,7 +4,7 @@ Dedicated Rails API for Sunrisr, an app that quizzes users every morning on thei
 
 ## API Endpoints
 
-Curl scripts are included in [`scripts`](scripts) to test API endpoints.
+Curl scripts are included in [`scripts`](scripts) to test API endpoints. Except for /sign-up, all endpoints require user authentication.
 
 ### Authentication
 
